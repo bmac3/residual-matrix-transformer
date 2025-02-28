@@ -12,4 +12,4 @@ Simply running `pip install -r requirements.txt` will install all required depen
 
 # Running Code
 
-Running `dvc repro` run a pipeline that downloads/tokenizes data and trains a transformer and rmt model. The results are logged using tensorboard. The training setup can be tweeked by changing relavent variables in `params.yaml`.
+Running `dvc repro` from the command line will run a pipeline that downloads/tokenizes data and trains a transformer and rmt model. The results are logged using tensorboard. The training setup can be tweeked by changing relavent variables in `params.yaml`.
