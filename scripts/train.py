@@ -117,6 +117,11 @@ def init_optimizer(
     )
 
 
+def loss_fn(model, batch):
+    logits = model(batch.input_ids, batch.attention_mask)
+    return z_loss(logits, 'Vocab', batch.target_ids).mean().scalar()
+
+
 def train_model(init_model):
 
     def train(
@@ -147,15 +152,7 @@ def train_model(init_model):
             compute_dtype=half,
             output_dtype=half
         )
-        
-        def loss_fn(model, batch):
-            logits = model(batch.input_ids, batch.attention_mask)
-            return z_loss(logits, 'Vocab', batch.target_ids).mean().scalar()
-
-        @jax.jit
-        def train_step(model, batch, opt_state, loss_scale):
-            return TrainStep(loss_fn, tx, mp_policy)(model, batch, opt_state, loss_scale)
-        
+        train_step = jax.jit(TrainStep.build(loss_fn, tx, mp_policy))
         writer = metric_writers.create_default_writer(logdir)
         hooks = [
             periodic_actions.ReportProgress(

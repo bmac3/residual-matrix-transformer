@@ -47,3 +47,11 @@ class TrainStep:
         new_model = optax.apply_updates(model, updates)
         model, opt_state = jmp.select_tree(grads_finite, (new_model, new_opt_state), (model, opt_state))
         return loss, model, opt_state, loss_scale
+    
+    @classmethod
+    def build(cls, loss_fn, tx, mp_policy):
+        
+        def train_step(model, batch, opt_state, loss_scale):
+            return cls(loss_fn, tx, mp_policy)(model, batch, opt_state, loss_scale)
+        
+        return train_step
