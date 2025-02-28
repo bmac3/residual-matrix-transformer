@@ -4,25 +4,20 @@ stages:
     deps:
     - params.yaml
     - scripts/download_and_tokenize.py
-  train transformer:
-    cmd: >- 
-      python scripts/train.py transformer 
-      --logdir ${logdir}/transformer 
-      --data_path ${data_config.save_dir}/train.bin 
-      --tokenizer_name ${data_config.tokenizer_name}
-      ${train_config} 
-      ${transformer_config}
-    deps:
-    - params.yaml
-    - scripts/train.py
-  train rmt:
-    cmd: >- 
-      python scripts/train.py rmt 
-      --logdir ${logdir}/rmt 
-      --data_path ${data_config.save_dir}/train.bin 
-      --tokenizer_name ${data_config.tokenizer_name}
-      ${train_config} 
-      ${rmt_config}
-    deps:
-    - params.yaml
-    - scripts/train.py
+  train:
+    foreach:
+      - model: 'transformer'
+        model_config: ${transformer_config}
+      - model: 'rmt'
+        model_config: ${rmt_config}
+    do:
+      cmd: >- 
+        python scripts/train.py ${item.model} 
+        --logdir ${logdir}/transformer 
+        --data_path ${data_config.save_dir}/train.bin 
+        --tokenizer_name ${data_config.tokenizer_name}
+        ${train_config} 
+        ${item.model_config}
+      deps:
+      - params.yaml
+      - scripts/train.py
