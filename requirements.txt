@@ -9,6 +9,7 @@ grain
 jmp
 msgspec
 transformers
+tensorflow
 tqdm
 fire
 git+https://github.com/stanford-crfm/haliax
