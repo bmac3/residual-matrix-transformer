@@ -1,0 +1,13 @@
+[project]
+name = "src"
+version = "0.0.0"
+description = "residual matrix transformer"
+readme = "README.md"
+requires-python =">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Brian Mak", email = "bmak2@ucsc.edu"},
+]
+
+[tool.setuptools]
+packages = ["src"]

@@ -1,0 +1,15 @@
+dvc
+equinox
+jax[cuda12]==0.4.38
+jaxtyping
+clu
+optax
+datasets
+grain
+jmp
+msgspec
+transformers
+tqdm
+fire
+git+https://github.com/stanford-crfm/haliax
+-e .

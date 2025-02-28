@@ -1,0 +1,31 @@
+data_config:
+  dataset_name: 'Salesforce/wikitext'
+  tokenizer_name: 'openai-community/gpt2'
+  save_dir: 'wikitext'
+  batch_size: 1024
+  n_shards: 1024
+  subset: 'wikitext-103-raw-v1'
+logdir: 'tensorboard'
+train_config:
+  sequence_length: 512
+  batch_size: 64
+  total_steps: 5000
+  full_dtype: 'f32'
+  half_dtype: 'bf16'
+  lr: 1.e-2
+  grad_clip: 1.0
+  warmup_steps: 500
+  seed: 42
+rmt_config:
+  reskey_dim: 32
+  resval_dim: 64
+  rank: 12
+  n_layers: 12
+  n_neurons: 3072
+  rmsnorm_eps: 1.e-6
+transformer_config:
+  embed_dim: 768
+  n_heads: 12
+  n_layers: 12
+  n_neurons: 3072
+  rmsnorm_eps: 1.e-6
