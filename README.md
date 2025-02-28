@@ -1,6 +1,6 @@
 # Residual Matrix Transformers
 
-This respository contains code for the paper "Residual Matrix Transformers: Scaling the Size of the Residual Stream".
+This respository contains code for the paper "Residual Matrix Transformers: Scaling the Size of the Residual Stream". A full version of the paper is included in this repo as `paper.pdf`
 
 # Abstract
 
