@@ -11,6 +11,6 @@ msgspec
 transformers
 tensorflow
 tqdm
-fire
+jsonargparse
 git+https://github.com/stanford-crfm/haliax
 -e .

@@ -1,20 +1,21 @@
 import os
+from typing import Optional
 
 from datasets import load_dataset
-from fire import Fire
+from jsonargparse import auto_cli
 import numpy as np
 from tqdm import tqdm
 from transformers import AutoTokenizer
 
 
 def download_and_tokenize(
-        dataset_name, 
-        tokenizer_name, 
-        save_dir, 
-        batch_size=1024,
-        n_shards=1024,
-        test_data_ratio=0.0,
-        subset=None
+        dataset_name: str, 
+        tokenizer_name: str, 
+        save_dir: str, 
+        batch_size: int = 1024,
+        n_shards: int = 1024,
+        test_data_ratio: float = 0.0,
+        subset: Optional[str] = None
     ):
     os.makedirs(save_dir, exist_ok=True)
     ds = load_dataset(dataset_name, subset, trust_remote_code=True)
@@ -50,4 +51,4 @@ def download_and_tokenize(
 
 
 if __name__ == '__main__':
-    Fire(download_and_tokenize)
+    auto_cli(download_and_tokenize, as_positional=False)
