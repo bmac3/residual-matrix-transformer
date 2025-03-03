@@ -119,7 +119,7 @@ class Train(abc.ABC):
         ):
         raise NotImplementedError
 
-    def __call__(self):
+    def _train(self):
         for step in tqdm(range(self.total_steps)):
             batch = self.dataset[step]
             loss, self.model, self.opt_state, self.loss_scale = self.train_step(self.model, batch, self.opt_state, self.loss_scale)
@@ -189,4 +189,4 @@ if __name__ == '__main__':
             'rmt': TrainRMT
         },
         as_positional=False
-    )()
+    )._train()
