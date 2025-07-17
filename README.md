@@ -1,6 +1,9 @@
 # Residual Matrix Transformers
 
-This respository contains code for the paper "Residual Matrix Transformers: Scaling the Size of the Residual Stream". A full version of the paper is included in this repo as `paper.pdf`
+This respository contains code for the paper "Residual Matrix Transformers: Scaling the Size of the Residual Stream". A full link to the ICML poster page can be found here (https://icml.cc/virtual/2025/poster/45278).
+
+![ICML_2025_poster](https://github.com/user-attachments/assets/2043927a-be19-470b-bf3f-2d047cc31945)
+
 
 # Abstract
 
